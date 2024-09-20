@@ -29,9 +29,23 @@ class Main extends State<MainApp> {
         body: Center(
           child: Column(
             children: [
-              Text(
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
                 result, 
-                style: TextStyle(fontSize: 30),
+                style: TextStyle(fontSize: 30)
+              ),
+              TextButton(onPressed: () {
+                onPressed('C');
+                }, 
+                 style: TextButton.styleFrom(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 30.0, vertical: 30.0),
+                            textStyle: TextStyle(fontSize: 25)
+                 ),
+                child: Text('C')),
+                ]
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -68,14 +82,14 @@ class Main extends State<MainApp> {
                       child: Text('3')),
                       TextButton(
                       onPressed: () {
-                        onPressed('C');
+                        onPressed('=');
                       },
                       style: TextButton.styleFrom(
                         padding: EdgeInsets.symmetric(
                             horizontal: 30.0, vertical: 30.0),
                             textStyle: TextStyle(fontSize: 25)
                       ),
-                      child: Text('C')),
+                      child: Text('=')),
                 ],
               ),
               Row(
@@ -183,17 +197,17 @@ class Main extends State<MainApp> {
                       child: Text('.')),
                   TextButton(
                       onPressed: () {
-                        onPressed('/');
+                        onPressed('0');
                       },
                       style: TextButton.styleFrom(
                         padding: EdgeInsets.symmetric(
                             horizontal: 30.0, vertical: 30.0),
                         textStyle: TextStyle(fontSize: 25)
                       ),
-                      child: Text('/')),
+                      child: Text('0')),
                   TextButton(
                       onPressed: () {
-                        onPressed('/');
+                        onPressed('*');
                       },
                       style: TextButton.styleFrom(
                           padding: EdgeInsets.symmetric(
@@ -203,14 +217,14 @@ class Main extends State<MainApp> {
                       child: Text('*')),
                       TextButton(
                       onPressed: () {
-                        onPressed('=');
+                        onPressed('/');
                       },
                       style: TextButton.styleFrom(
                         padding: EdgeInsets.symmetric(
                             horizontal: 30.0, vertical: 30.0),
                             textStyle: TextStyle(fontSize: 25)
                       ),
-                      child: Text('=')),
+                      child: Text('/')),
                 ],
               ),
             ],
@@ -232,31 +246,31 @@ class Main extends State<MainApp> {
           double secondValue = double.parse(numbers.last);
           double res = firstValue + secondValue;
 
-          result = res as String;
+          result = res.toString();
         }else
         if(result.contains('-')){
-          List<String> numbers = result.split('+');
+          List<String> numbers = result.split('-');
           double firstValue = double.parse(numbers.first);
           double secondValue = double.parse(numbers.last);
           double res = firstValue - secondValue;
 
-          result = res as String;
+          result = res.toString();
         }
         if(result.contains('/')){
-          List<String> numbers = result.split('+');
+          List<String> numbers = result.split('/');
           double firstValue = double.parse(numbers.first);
           double secondValue = double.parse(numbers.last);
           double res = firstValue / secondValue;
 
-          result = res as String;
+          result = res.toString();
         }else
         if(result.contains('*')){
-          List<String> numbers = result.split('+');
+          List<String> numbers = result.split('*');
           double firstValue = double.parse(numbers.first);
           double secondValue = double.parse(numbers.last);
           double res = firstValue * secondValue;
 
-          result = res as String;
+          result = res.toString();
         }
       } else {
         result += buttonText;
